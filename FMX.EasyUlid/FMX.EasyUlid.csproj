@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+		<!-- Nuget Package Info -->
+		<Version>1.0.2</Version>
+		<Authors>Jason Ray</Authors>
+		<PackageId>FMX.EasyUlid</PackageId>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>Creates strongly typed record types with Ulid backing values.</Description>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryBranch>main</RepositoryBranch>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+		<DevelopmentDependency>true</DevelopmentDependency>
+  </PropertyGroup>
+
+  <ItemGroup>
+		<PackageReference Include="Ulid" Version="1.3.4" />
+		<ProjectReference Include="..\FMX.EasyUlid.Core\FMX.EasyUlid.Core.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\FMX.EasyUlid.SourceGenerators\FMX.EasyUlid.SourceGenerators.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+  </ItemGroup>
+	
+	<!-- Nuget Packaging Info -->
+	<ItemGroup>
+		<None Include="docs\README.md" Pack="true" PackagePath="\" />
+		<None Include="$(OutputPath)\FMX.EasyUlid.SourceGenerators.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="true" />
+	</ItemGroup>
+
+	<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+		</ItemGroup>
+	</Target>
+
+	<Target Name="IncludeAllFilesInTargetDir" AfterTargets="Build">
+		<ItemGroup>
+			<None Include="$(TargetDir)\**">
+				<Pack>true</Pack>
+				<PackagePath>tools</PackagePath>
+			</None>
+		</ItemGroup>
+	</Target>
+	
+	<ItemGroup>
+	  <Folder Include="docs\" />
+	</ItemGroup>
+
+</Project>

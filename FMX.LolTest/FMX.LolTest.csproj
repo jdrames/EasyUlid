@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FMX.EasyUlid.Core\FMX.EasyUlid.Core.csproj" />
+		<ProjectReference Include="..\FMX.EasyUlid.SourceGenerators\FMX.EasyUlid.SourceGenerators.csproj" >
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+			<OutputItemType>Analyzer</OutputItemType>
+		</ProjectReference>
+  </ItemGroup>
+
+</Project>

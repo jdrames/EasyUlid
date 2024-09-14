@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+		<!-- Nuget Package Info -->
+		<Version>1.0.1</Version>
+		<Authors>Jason Ray</Authors>
+		<PackageId>FMX.EasyUlid.EntityFramework</PackageId>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>Entity Framework Core Value converter and genertator helper methods for FMX.EasyUlid </Description>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryBranch>main</RepositoryBranch>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>		
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="docs\README.md" Pack="true" PackagePath="\" />		
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="FMX.EasyUlid" Version="1.0.2">
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+	</ItemGroup>
+</Project>
